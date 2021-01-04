@@ -102,6 +102,18 @@ const managerInfo = () => {
     ]);
 }
 
+//Add member
+const addPosition = () => {
+    return inquirer.prompt([
+        {
+            type: 'list',
+            name: 'addPosition',
+            message: 'Do you want to add a new member?',
+            choices: ['Yes', 'No'],
+        },
+    ]);
+}
+
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
