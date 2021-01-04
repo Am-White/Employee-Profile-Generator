@@ -77,7 +77,7 @@ const engineerInfo = () => {
 }
 
 //Intern
-const managerInfo = () => {
+const internInfo = () => {
     return inquirer.prompt([
         {
             type: 'input',
