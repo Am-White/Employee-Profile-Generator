@@ -12,7 +12,7 @@ const render = require("./lib/htmlRenderer");
 
 const employeeList = [];
 
-//Asks user which position to add
+//======-Asks user which position to add========
 const positionInfo = () => {
     return inquirer.prompt([
         {
@@ -50,7 +50,7 @@ const employeeQuestions = [
 
 askForEmployeePosition();
 
-///////
+//======Base line questions=======
 function askForEmployeePosition() {
     console.log("======X======");
     console.log("ADD a position");
@@ -72,7 +72,7 @@ function askForEmployeePosition() {
             askForManagerInfo();
         }
     });
-////////
+//=======Engineer=======
     function askForEngineerInfo() {
         console.log("======X======");
         console.log("ADD an Engineer position");
@@ -96,7 +96,7 @@ function askForEmployeePosition() {
             console.log(e);
         })
     }
-///////
+//=======Intern=======
     function askForInternInfo() {
         console.log("======X======");
         console.log("ADD an Intern position");
@@ -117,7 +117,7 @@ function askForEmployeePosition() {
             askToContinue();
         })
     }
-//////
+//======Manager questions to add======
     function askForManagerInfo() {
         console.log("======X======");
         console.log("ADD an Intern position");
@@ -141,7 +141,7 @@ function askForEmployeePosition() {
             console.log(e);
         })
     }
-
+//======Continue prompt?=======
     function askToContinue() {
         inquirer.prompt({
             message: "Do you want to add another team member?",
@@ -161,7 +161,7 @@ function askForEmployeePosition() {
         })
     }
 }
-
+//=======Render function for HTML file to be created======
 function createHtmlFile() {
     const html = render(employees);
         if (! fs.existsSync(OUTPUT_DIR))
