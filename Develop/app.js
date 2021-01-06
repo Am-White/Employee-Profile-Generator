@@ -25,8 +25,7 @@ const positionInfo = () => {
 }
 
 //Manager questionnaire
-const managerInfo = () => { 
-    return inquirer.prompt([
+const employeeQuestions = [
         {
             type: 'input',
             name: 'name',
@@ -44,63 +43,18 @@ const managerInfo = () => {
         },
         {
             type: 'input',
-            name: 'officeNumber',
-            message: 'Please enter your office number:',
-        },
-    ]);
-}
+            name: 'position',
+            message: 'Please enter your employee position:',
+        }
+    ];
 
-//Engineer questionnaire
-const engineerInfo = () => {
-    return inquirer.prompt([
-        {
-            type: 'input',
-            name: 'name',
-            message: 'Please enter the name of this member:',
-        },
-        {
-            type: 'input',
-            name: 'id',
-            message: 'Please enter the ID number of this member:',
-        },
-        {
-            type: 'input',
-            name: 'email',
-            message: 'Please enter the Email of this member:',
-        },
-        {
-            type: 'input',
-            name: 'github',
-            message: 'Please enter your github username:',
-        },
-    ]);
-}
 
-//Intern questionnaire
-const internInfo = () => {
-    return inquirer.prompt([
-        {
-            type: 'input',
-            name: 'name',
-            message: 'Please enter the name of this member:',
-        },
-        {
-            type: 'input',
-            name: 'id',
-            message: 'Please enter the ID number of this member:',
-        },
-        {
-            type: 'input',
-            name: 'email',
-            message: 'Please enter the Email of this member:',
-        },
-        {
-            type: 'input',
-            name: 'school',
-            message: 'Please enter your school:',
-        },
-    ]);
-}
+
+
+
+
+
+    
 
 //Add more people to the team
 const addMember = () => {
