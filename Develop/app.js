@@ -52,8 +52,9 @@ askForEmployeePosition();
 
 function askForEmployeePosition() {
     console.log("======X======");
-    console.log("ADD engineer position");
+    console.log("ADD a position");
     console.log("======X======");
+
 
     inquirer.prompt({
         message: "What is this employee's position?",
@@ -70,6 +71,30 @@ function askForEmployeePosition() {
             askForManagerInfo();
         }
     });
+
+    function askForEngineerInfo() {
+        console.log("======X======");
+        console.log("ADD an Engineer position");
+        console.log("======X======");
+
+
+        inquirer.prompt([
+            ...employeeQuestions,
+            {
+                type:"input",
+                message: "What is this employees GitHub username?",
+                name: "github"
+            }
+        ])
+        .then(({name, id, email, github}) => {
+            employeeList.push(new Engineer(name, id, email, github));
+            //(response.name, response.id, response.email, response.github)
+            askToContinue();
+        })
+        .catch(e => {
+            console.log(e);
+        })
+    }
 }
 
 
