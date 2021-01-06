@@ -50,6 +50,7 @@ const employeeQuestions = [
 
 askForEmployeePosition();
 
+///////
 function askForEmployeePosition() {
     console.log("======X======");
     console.log("ADD a position");
@@ -71,7 +72,7 @@ function askForEmployeePosition() {
             askForManagerInfo();
         }
     });
-
+////////
     function askForEngineerInfo() {
         console.log("======X======");
         console.log("ADD an Engineer position");
@@ -95,7 +96,7 @@ function askForEmployeePosition() {
             console.log(e);
         })
     }
-
+///////
     function askForInternInfo() {
         console.log("======X======");
         console.log("ADD an Intern position");
@@ -116,66 +117,26 @@ function askForEmployeePosition() {
             askToContinue();
         })
     }
-
-    
-}
-
-
-
-
+//////
+    function askForManagerInfo() {
+        console.log("======X======");
+        console.log("ADD an Intern position");
+        console.log("======X======");
 
 
+        inquirer.prompt([
+            ...employeeQuestions,
+            {
+                type:"input",
+                message: "What is the employees phone number?",
+                name: "phone"
+            }
+        ])
+        .then(({name, id, email, phone}) => {
+            employeeList.push(new Manager(name, id, email, phone));
 
-//Add more people to the team
-const addMember = () => {
-    return inquirer.prompt([
-        {
-            type: 'list',
-            name: 'addMember',
-            message: 'Do you want to add another new member?',
-            choices: ['Yes', 'No'],
-        },
-    ]);
-}
-
-//Creates HTML 
-async function promptUser() {
-    console.log("-----------------------");
-    const roleType = await positionInfo();
-    
-    if (roleType.role === "Manager") {
-        const managerData = await managerInfo();
-        const manager = new Manager(managerData.name, managerData.id, managerData.email, managerData.officeNumber);
-        employeeList.push(manager);
-
-    } else if (roleType.role === "Engineer") {
-        const engineerData = await engineerInfo();
-        const engineer = new Engineer(engineerData.name, engineerData.id, engineerData.email, engineerData.github);
-        employeeList.push(engineer);
-
-    } else if (roleType.role === "Intern") {
-        const internData = await internInfo();
-        const intern = new Intern(internData.name, internData.id, internData.email, internData.school);
-        employeeList.push(intern);
-    }
-
-    addNewMember();
-}
-
-// Create a function to add new member or end up to write the team html file
-async function addNewMember() {
-    const newMember = await addMember();
-
-    if (newMember.addMember === "Yes") {
-        console.log("==x==");
-        promptUser();
-        
-    } else if (newMember.addMember === "No") {
-        const team = render(employeeList);
-        fs.writeFileSync(outputPath, team);
-        console.log("==x==");
-        console.log("Your teams page has been created!")
+            askToContinue();
+        })
     }
 }
 
-promptUser();
