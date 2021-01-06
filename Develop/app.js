@@ -137,6 +137,39 @@ function askForEmployeePosition() {
 
             askToContinue();
         })
+        .catch(e => {
+            console.log(e);
+        })
     }
+
+    function askToContinue() {
+        inquirer.prompt({
+            message: "Do you want to add another team member?",
+            name: "addNew",
+            type:"list",
+            choices: [
+                "yes",
+                "no"
+            ],
+        }).then(({addNew}) => {
+            if (addNew === "Yes") {
+                askForEmployeePosition()
+            } else {
+                console.log("Team profiles built successfully!");
+                createHtmlFile();
+            }
+        })
+    }
+}
+
+function createHtmlFile() {
+    const html = render(employees);
+        if (! fs.existsSync(OUTPUT_DIR))
+            fs.mkdirSync(OUTPUT_DIR);
+
+    fs.writeFile(outputPath, html, (err) => {
+        if (err) console.log(err);
+        else console.log("HTML page created!");
+    });
 }
 
