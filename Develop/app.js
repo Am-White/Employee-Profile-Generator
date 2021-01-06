@@ -24,7 +24,7 @@ const positionInfo = () => {
     ]);
 }
 
-//Manager questionnaire
+//------------------------
 const employeeQuestions = [
         {
             type: 'input',
@@ -48,13 +48,35 @@ const employeeQuestions = [
         }
     ];
 
+askForEmployeePosition();
+
+function askForEmployeePosition() {
+    console.log("======X======");
+    console.log("ADD engineer position");
+    console.log("======X======");
+
+    inquirer.prompt({
+        message: "What is this employee's position?",
+        name:"position",
+        type:"list",
+        choices: ["Engineer", "Intern", "Manager"]
+
+    }).then((response) => {
+        if (response.position === "Engineer") {
+            askForEngineerInfo()
+        } else if (response.position === "Intern") {
+            askForInternInfo();
+        } else if (response.position === "Manager") {
+            askForManagerInfo();
+        }
+    });
+}
 
 
 
 
 
 
-    
 
 //Add more people to the team
 const addMember = () => {
