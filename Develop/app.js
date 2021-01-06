@@ -10,20 +10,7 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
-const employeeList = [];
-
-//======-Asks user which position to add========
-const positionInfo = () => {
-    return inquirer.prompt([
-        {
-            type: 'list',
-            name: 'role',
-            message: 'Please choose the role of this member:',
-            choices: ['Manager', 'Engineer', 'Intern'],
-        },
-    ]);
-}
-
+const employees = [];
 //------------------------
 const employeeQuestions = [
         {
@@ -88,7 +75,7 @@ function askForEmployeePosition() {
             }
         ])
         .then(({name, id, email, github}) => {
-            employeeList.push(new Engineer(name, id, email, github));
+            employees.push(new Engineer(name, id, email, github));
             //(response.name, response.id, response.email, response.github)
             askToContinue();
         })
@@ -108,11 +95,11 @@ function askForEmployeePosition() {
             {
                 type:"input",
                 message:"What school is the intern attending?",
-                name: school
+                name: "school"
             }
         ])
-        .then(({name, id, email, github}) => {
-            employeeList.push(new Intern(name, id, email, school));
+        .then(({name, id, email, school}) => {
+            employees.push(new Intern(name, id, email, school));
 
             askToContinue();
         })
@@ -133,7 +120,7 @@ function askForEmployeePosition() {
             }
         ])
         .then(({name, id, email, phone}) => {
-            employeeList.push(new Manager(name, id, email, phone));
+            employees.push(new Manager(name, id, email, phone));
 
             askToContinue();
         })
@@ -153,9 +140,10 @@ function askForEmployeePosition() {
             ],
         }).then(({addNew}) => {
             if (addNew === "Yes") {
-                askForEmployeePosition()
+                askForEmployeePosition();
             } else {
                 console.log("Team profiles built successfully!");
+                console.log(employees);
                 createHtmlFile();
             }
         })
