@@ -95,6 +95,29 @@ function askForEmployeePosition() {
             console.log(e);
         })
     }
+
+    function askForInternInfo() {
+        console.log("======X======");
+        console.log("ADD an Intern position");
+        console.log("======X======");
+
+
+        inquirer.prompt([
+            ...employeeQuestions,
+            {
+                type:"input",
+                message:"What school is the intern attending?",
+                name: school
+            }
+        ])
+        .then(({name, id, email, github}) => {
+            employeeList.push(new Intern(name, id, email, school));
+
+            askToContinue();
+        })
+    }
+
+    
 }
 
 
