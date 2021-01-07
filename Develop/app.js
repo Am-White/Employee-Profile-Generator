@@ -139,7 +139,7 @@ function askForEmployeePosition() {
                 "no"
             ],
         }).then(({addNew}) => {
-            if (addNew === "Yes") {
+            if (addNew === "yes") {
                 askForEmployeePosition();
             } else {
                 console.log("Team profiles built successfully!");
