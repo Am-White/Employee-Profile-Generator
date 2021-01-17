@@ -11,10 +11,10 @@ This application generates an html file that displays the members that are input
 - [License](#license)
 
 💻 HTML generated:
-![Team Webpage](...)
+![Team Webpage](ScreenShot.png)
 
 🎥 Live demo:
-![Video Recording of App](...)
+[Video Recording of App](https://drive.google.com/file/d/1wWl3hRbT1MjDZoCm0gcQ8JkFFHH9m5yw/view)
 
 ## User Story
 
